@@ -1,0 +1,56 @@
+
+            <script src="https://cdn.bootcss.com/echarts/4.0.4/echarts.min.js"></script>
+            <div class='multipleecharts'>
+            <div id="multipleechartsbmONXE6tHh" style="width: 800px;height:800px;"></div>
+            <script type="text/javascript">
+                function zip(source1, source2){
+                    var result=[];
+                    source1.forEach(function(o,i){
+                    result.push([o, source2[i]]);
+                    });
+                    return result
+                };
+                function pieZip(source1, source2){
+                    var result=[];
+                    source1.forEach(function(o,i){
+                        result.push({'name':o, 'value': source2[i]});
+                    });
+                    return result
+                };
+        
+                function Xset(source1, source2){
+                    if(source1 == ''){
+                        var result=[];
+                        source2.forEach(function(o,i){
+                            result.push(i);
+                        });
+                        return result
+                    }else{
+                        return source1    
+                    }
+                };
+        
+                function histBinCount(arr){
+                    var counts = Array.apply(null, Array(100)).map(Number.prototype.valueOf,0);
+                    var min = Math.min.apply(null, arr),
+                        max = Math.max.apply(null, arr);
+                    var res = arr.map(function(x){return (x-min)*100/(max-min)})
+                    console.log(arr, counts, res, min, max)
+                };
+
+                var myChart = echarts.init(document.getElementById("multipleechartsbmONXE6tHh"));
+                var option = {
+                    title: [{'text': 'Example', 'x': 'center', 'y': 0}, {'text': 'Chart 1', 'x': '7.5%', 'y': '10.0%'}, {'text': 'Chart 2', 'x': '52.5%', 'y': '10.0%'}],
+                    tooltip: {
+                    
+                     
+                    },
+                    grid:[{'x': '7.5%', 'y': '10.0%', 'width': '40.0%', 'height': '80.0%'}, {'x': '52.5%', 'y': '10.0%', 'width': '40.0%', 'height': '80.0%'}],
+                    xAxis:[{gridIndex:'0',},{},],
+                    yAxis: [{gridIndex:'0',},{},],
+                    series: [{name:'Line',data:zip([10, 9, 8, 7, 6, 5, 4, 3, 2, 1], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]),type:'line',xAxisIndex:'0',yAxisIndex:'0',},{name:'pie',data:pieZip([1, 2, 3, 4, 5], [2, 3, 4, 5, 6]),type:'pie',radius:['11.428571428571429%', '26.666666666666668%'],center:['72.5%', '50.0%'],},],
+                };
+                myChart.setOption(option);
+            </script>
+            </div>
+            

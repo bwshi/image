@@ -1,0 +1,62 @@
+
+    <script src="https://cdn.bootcss.com/echarts/4.0.4/echarts.min.js"></script>
+    <div id="echartsbmYXn6wE19" style="width: 400px; height:300px;"></div>
+    <script type="text/javascript">
+        function zip(source1, source2){
+            var result=[];
+            source1.forEach(function(o,i){
+            result.push([o, source2[i]]);
+            });
+            return result
+        };
+        function pieZip(source1, source2){
+            var result=[];
+            source1.forEach(function(o,i){
+                result.push({'name':o, 'value': source2[i]});
+            });
+            return result
+        };
+
+        function Xset(source1, source2){
+            if(source1 == ''){
+                var result=[];
+                source2.forEach(function(o,i){
+                    result.push(i);
+                });
+                return result
+            }else{
+                return source1    
+            }
+        };
+
+        function histBinCount(arr){
+            var counts = Array.apply(null, Array(100)).map(Number.prototype.valueOf,0);
+            var min = Math.min.apply(null, arr),
+                max = Math.max.apply(null, arr);
+            var res = arr.map(function(x){return (x-min)*100/(max-min)})
+            console.log(arr, counts, res, min, max)
+        };
+
+        var myChart = echarts.init(document.getElementById("echartsbmYXn6wE19"));
+        var option = {
+            title: { text: "example" },
+            legend: { data: [1, 2, 3, 4, 5] },
+            series: [{name:'Pie',data:pieZip([1, 2, 3, 4, 5], [2, 3, 4, 5, 6]),type:'pie',radius:['30%', '75%'],},],
+            
+            
+            
+                
+                 
+            
+                tooltip: {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b} : {c} ({d}%)"
+                },
+             
+                   
+            
+
+        };
+        myChart.setOption(option);
+    </script>
+    
